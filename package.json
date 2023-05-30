@@ -1,0 +1,54 @@
+{
+  "name": "reminder-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/abba-m/reminder-api.git",
+  "author": "Muhammad Mahmood <mmuhammadabba@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "// ------ DEVELOPMENT ----- //": "",
+    "dev": "nodemon --exec babel-node ./src/index.js",
+    "prepare": "husky install",
+    "// ------ BUILDING ----- //": "",
+    "clean": "rm -rf build && mkdir build",
+    "start": "node ./build/index.js",
+    "build-babel": "babel src -d build",
+    "build": "npm run clean && npm run build-babel",
+    "// ------ LINTING ----- //": "",
+    "lint": "eslint src/**/*.js",
+    "lint:fix": "eslint src/**/*.js --fix",
+    "prettier:format": "prettier --write src/**/*.js",
+    "prettier:check": "prettier --check src/**/*.js"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.21.5",
+    "@babel/core": "^7.22.1",
+    "chalk": "^5.2.0",
+    "dotenv": "^16.1.0",
+    "express": "^4.18.2",
+    "mysql2": "^3.3.3",
+    "sequelize": "^6.31.1",
+    "sequelize-cli": "^6.6.0"
+  },
+  "devDependencies": {
+    "@babel/node": "^7.20.2",
+    "@babel/plugin-transform-runtime": "^7.19.6",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/runtime": "^7.20.1",
+    "babel-plugin-add-import-extension": "^1.6.0",
+    "eslint": "^8.13.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.2",
+    "lint-staged": "^13.0.3",
+    "nodemon": "^2.0.12",
+    "prettier": "^2.6.2"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,js}": [
+      "prettier --write",
+      "eslint src/*.{ts,js}"
+    ]
+  }
+}
