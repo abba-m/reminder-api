@@ -1,7 +1,8 @@
+import { ReminderModelI } from './../interfaces/reminder.interface'
 import { sequelizeConn } from "../config/db";
 import { DataTypes } from "sequelize";
 
-export const Reminder = sequelizeConn.define("Reminder", {
+export const Reminder = sequelizeConn.define<ReminderModelI>("Reminder", {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,

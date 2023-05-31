@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 import { sequelizeConn } from "./config/db";
 import cors from "cors";
 import { Reminder } from "./models/reminder.model";
-import { Op } from "sequelize";
+import { Op, WhereOptions } from "sequelize";
 
 import {
   createLogger,
@@ -12,6 +12,7 @@ import {
   notSupportedHandler,
   serverErrorHandler,
 } from "./utils/utils";
+import { GetAllRemindersAttr } from "./interfaces/reminder.interface";
 
 const debug = createLogger("ServerSetup");
 // load env configs
@@ -20,7 +21,7 @@ dotenv.config();
 const app = express();
 const PORT = normalizePort(process.env.PORT || 5001);
 
-app.use(express.json({ limit: "30mb", extended: false }));
+app.use(express.json({ limit: "30mb" }));
 app.use(express.urlencoded({ limit: "30mb", extended: false }));
 app.use(
   cors({
@@ -35,8 +36,8 @@ const routeWithID = route + "/:id";
 app.get(route, async (req, res) => {
   const debug = createLogger(`${route}`);
   try {
-    const { user = null, after = null } = req.query;
-    const where = {};
+    const { user, after }: GetAllRemindersAttr = req.query;
+    const where: WhereOptions = {};
 
     if (user) where.userId = user;
     if (after)

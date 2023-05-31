@@ -10,16 +10,14 @@ export const normalizePort = (val) => {
     // port number
     return port;
   }
-
-  return false;
 };
 
-export const createLogger = (path) => {
+export const createLogger = (path: string) => {
   const { log } = console;
 
   log("Logger created for:", process.env.NODE_ENV);
 
-  const error = (value) => {
+  const error = (value: string | number | object) => {
     if (typeof value === "object") {
       value = JSON.stringify(value, null, 2);
     }
