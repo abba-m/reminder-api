@@ -23,7 +23,7 @@
     "allowJs": true,
     /* Emit */
     "sourceMap": true,
-    "outDir": "backend",
+    "outDir": "build",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     /* Type Checking */
