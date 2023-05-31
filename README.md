@@ -1,1 +1,2 @@
-# reminder-api
+# Reminder API
+## Project Setup
