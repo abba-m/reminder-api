@@ -5,6 +5,7 @@ import { sequelizeConn } from "./config/db";
 import cors from "cors";
 import { Reminder } from "./models/reminder.model";
 import { Op, WhereOptions } from "sequelize";
+import helmet from "helmet";
 
 import {
   createLogger,
@@ -23,6 +24,7 @@ const PORT = normalizePort(process.env.PORT || 5001);
 
 app.use(express.json({ limit: "30mb" }));
 app.use(express.urlencoded({ limit: "30mb", extended: false }));
+app.use(helmet());
 app.use(
   cors({
     origin: "*",
